@@ -1,0 +1,106 @@
+{
+  "name": "error-radar",
+  "displayName": "Error Radar — Workspace Diagnostics",
+  "description": "See every error and warning across your entire workspace in one panel. Click to jump. Filter by severity. Made by Chaos Monk.",
+  "version": "0.1.0",
+  "publisher": "chaosmonk",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Debuggers"
+  ],
+  "keywords": [
+    "vscode",
+    "diagnostics",
+    "errors",
+    "warnings",
+    "debug",
+    "productivity",
+    "developer-tools",
+    "workspace",
+    "code-quality"
+  ],
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmagee3/error-radar"
+  },
+  "homepage": "https://chaosmonk.netlify.app",
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "errorRadar.openPanel",
+        "title": "Error Radar: Open Panel",
+        "icon": "$(radar)"
+      },
+      {
+        "command": "errorRadar.refresh",
+        "title": "Error Radar: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "errorRadar.setFilter",
+        "title": "Error Radar: Set Filter",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "errorRadar.setSort",
+        "title": "Error Radar: Set Sort",
+        "icon": "$(sort-precedence)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "error-radar",
+          "title": "Error Radar",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "error-radar": [
+        {
+          "id": "errorRadar.diagnosticsView",
+          "name": "Diagnostics",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "errorRadar.refresh",
+          "when": "view == errorRadar.diagnosticsView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "errorRadar.setFilter",
+          "when": "view == errorRadar.diagnosticsView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "errorRadar.setSort",
+          "when": "view == errorRadar.diagnosticsView",
+          "group": "navigation@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
