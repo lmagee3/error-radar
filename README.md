@@ -1,90 +1,154 @@
 # Error Radar
 
-**See every workspace error in one place.**
+**A VS Code extension that surfaces workspace errors in one place.**
 
-Error Radar is a free VS Code extension that surfaces diagnostics (errors + warnings) across your entire codebase in a single panel, with fast filters and click-to-jump navigation.
+Error Radar is a lightweight developer utility that aggregates diagnostics across an entire workspace so developers can quickly see what is broken without opening files one by one.
+
+The goal is simple:
+
+> Spend less time hunting for problems and more time fixing them.
+
+---
+
+## The problem
+
+Modern projects generate diagnostics from everywhere: TypeScript, ESLint, Python, build tools, language servers, and framework tooling.
+
+The default workflow in many editors is reactive:
+
+- open a file
+- discover an error
+- fix it
+- move to the next file
+- repeat
+
+That works for small projects.
+
+For larger codebases, it becomes friction.
+
+Error Radar gives developers a single place to understand the state of a workspace.
 
 ---
 
 ## What it does
 
-Stop opening files one by one just to find what's broken.
-
-- **Aggregates all diagnostics** — errors and warnings from every file in your workspace, not just the currently open one
-- **One-click navigation** — click any item to jump directly to the exact file and line
-- **Filter by severity** — view all diagnostics, errors only, or warnings only
-- **Sort controls** — sort by severity (errors first) or alphabetically by file name
-- **Auto-refresh** — the panel updates automatically as diagnostics change
-- **Status bar indicator** — see your error/warning count at a glance without opening the panel
-- **Multi-root workspace support** — aggregates diagnostics across all workspace roots
+- Aggregates diagnostics across the full workspace
+- Displays errors and warnings in one panel
+- Supports one-click navigation to files and lines
+- Filters by severity (all, warnings, errors)
+- Sorts diagnostics for faster triage
+- Refreshes automatically as diagnostics update
+- Includes status-bar visibility for quick awareness
+- Supports multi-root workspaces
 
 ---
 
-## Install
+## Example workflow
 
-Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=chaosmonk.error-radar).
+Instead of:
 
-Or press `Ctrl+Shift+X` (Windows/Linux) / `Cmd+Shift+X` (Mac), search for **Error Radar**, and click Install.
+```text
+Open file → notice error → repeat across project
+```
+
+You get:
+
+```text
+Open Error Radar → see all issues → prioritize → fix
+```
+
+This helps developers quickly answer:
+
+> “What is actually broken right now?”
 
 ---
 
 ## Usage
 
-1. Click the **Error Radar** icon in the Activity Bar (radar icon on the left sidebar)
-2. The **Diagnostics** panel shows all errors and warnings across your workspace
-3. Click any item to jump to that exact location in the file
-4. Use the toolbar icons to **Refresh**, **Set Filter**, or **Set Sort**
+1. Open the **Error Radar** view in VS Code
+2. Review all workspace diagnostics in a single panel
+3. Click an issue to jump directly to the source file and line
+4. Filter or sort to focus on high-priority fixes
 
 ### Commands
 
-| Command | Description |
-|---------|-------------|
+| Command | Purpose |
+|---|---|
 | `Error Radar: Open Panel` | Focus the diagnostics panel |
-| `Error Radar: Refresh` | Force-refresh the diagnostics list |
-| `Error Radar: Set Filter` | Choose All / Errors only / Warnings only |
-| `Error Radar: Set Sort` | Sort by Severity or File name |
-
-Access commands via `Ctrl+Shift+P` / `Cmd+Shift+P` and type `Error Radar`.
+| `Error Radar: Refresh` | Refresh diagnostics |
+| `Error Radar: Set Filter` | Show all, warnings only, or errors only |
+| `Error Radar: Set Sort` | Sort diagnostics by file or severity |
 
 ---
 
-## Running from Source (Dev)
+## Installation
 
-```bash
-git clone https://github.com/lmagee3/error-radar
-cd error-radar
-npm install
+Install from the VS Code Marketplace:
+
+https://marketplace.visualstudio.com/items?itemName=chaosmonk.error-radar
+
+Or open VS Code Extensions and search:
+
+```text
+Error Radar
 ```
 
-Then press **F5** in VS Code to launch the Extension Development Host with Error Radar loaded.
+---
+
+## Why I built it
+
+I found myself repeatedly opening files just to discover what had already broken somewhere else in the workspace.
+
+The underlying diagnostics already existed — the friction was visibility.
+
+Error Radar is a small example of the kinds of tools I like building:
+
+- solve a real workflow pain
+- reduce cognitive load
+- keep the experience simple
+- improve execution without adding complexity
 
 ---
 
-## Known Limitations
+## Technical notes
 
-- Diagnostics from language servers that haven't loaded yet won't appear until they initialize (use Refresh after the workspace fully loads)
-- For very large projects (>1000 diagnostics), scroll performance may vary depending on VS Code's tree view rendering
-- The `icon.png` marketplace icon needs to be exported from `resources/icon.svg` before publishing
-
----
-
-## Roadmap
-
-- [ ] Group diagnostics by file (collapsible tree)
-- [ ] Filter by source (ESLint, TypeScript, etc.)
-- [ ] Keyboard shortcut to cycle filter modes
-- [ ] Persistent filter/sort preferences across sessions
-- [ ] Export diagnostics to a report file
+| Area | Details |
+|---|---|
+| Platform | VS Code extension |
+| Language | TypeScript |
+| Runtime | VS Code Extension API |
+| Scope | Workspace-wide diagnostics |
+| Audience | Developers working across medium or large projects |
 
 ---
 
-## Built by Chaos Monk
+## Future improvements
 
-Error Radar is built by **[Chaos Monk](https://chaosmonk.netlify.app)** — practical tools for developers who value clarity, speed, and local-first workflows.
+Planned ideas include:
 
-## More from Chaos Monk
+- grouping diagnostics by file
+- filtering by diagnostic source
+- persistent filter preferences
+- keyboard shortcuts for triage
+- exportable diagnostic reports
 
-- **Chaos Monk Workspace Sitemap** ($10) — Map and index your entire Notion workspace in seconds. [Get it here](https://chaosmonk.netlify.app/#pricing)
+---
+
+## Portfolio note
+
+This repo exists both as a working utility and as a public demonstration of how I think about product design:
+
+> Find friction → simplify workflow → make useful things.
+
+---
+
+## Built by
+
+**Lawrence Magee**  
+U.S. Army IT veteran · AI systems builder · founder/operator focused on practical tools and workflow improvement
+
+- GitHub: [@lmagee3](https://github.com/lmagee3)
+- Related tools: [Chaos Monk](https://chaosmonk.netlify.app)
 
 ---
 
