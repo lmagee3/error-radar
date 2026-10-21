@@ -21,7 +21,3 @@ This is visibility over diagnostics already available to VS Code, not a new comp
 ## What I learned
 
 The useful design choice was to keep the tool narrow: collect existing signals, give them a predictable order, and let a developer jump to the source. That makes the workflow easier to inspect without pretending to solve the underlying errors automatically.
-
-## Authorship
-
-This article was prepared with AI writing assistance and reviewed by Lawrence Magee against the linked implementation.
